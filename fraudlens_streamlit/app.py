@@ -114,7 +114,7 @@ def train_sms_model():
 # =====================
 def train_link_model():
     st.info("Training Link model for first time...")
-    df = pd.read_csv("datasets/merged_url_dataset.csv")
+    df = pd.read_csv("fraudlens_streamlit/datasets/merged_url_dataset.csv")
     df = df[['url','type']]
     df['url'] = df['url'].apply(clean_url)
 

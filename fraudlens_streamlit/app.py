@@ -95,7 +95,7 @@ def train_sms_model():
     st.info("Training SMS model for first time...")
     df = pd.read_csv("fraudlens_streamlit/datasets/merged_email_sms_spam_dataset.csv")
 
-    X = df['message'].apply(clean_text)
+    X = df['text'].apply(clean_text)
     y = df['label']
 
     vectorizer = TfidfVectorizer(stop_words="english")

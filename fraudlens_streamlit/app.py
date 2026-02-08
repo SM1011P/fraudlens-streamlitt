@@ -54,6 +54,11 @@ textarea, input {background-color: #F1FFFF !important; color: black !important;}
 BASE_DIR = os.path.dirname(__file__)
 logo_path = os.path.join(BASE_DIR, "logo.jpg")
 
+DATASET_DIR = os.path.join(BASE_DIR, "datasets")
+
+SMS_DATA_PATH = os.path.join(DATASET_DIR, "merged_email_sms_spam_dataset.csv")
+URL_DATA_PATH = os.path.join(DATASET_DIR, "merged_url_dataset.csv")
+
 col1, col2, col3 = st.columns([2,3,2])
 with col2:
     st.image(logo_path, width=260)
@@ -114,7 +119,15 @@ def train_sms_model():
 # =====================
 def train_link_model():
     st.info("Training Link model for first time...")
-    df = pd.read_csv("fraudlens_streamlit/datasets/merged_url_dataset.csv")
+    st.write("Current directory:", os.getcwd())
+st.write("Files in BASE_DIR:", os.listdir(BASE_DIR))
+
+if os.path.exists(DATASET_DIR):
+    st.write("Files in datasets:", os.listdir(DATASET_DIR))
+else:
+    st.error("datasets folder not found!")
+
+    df = pd.read_csv(URL_DATA_PATH)
     df = df[['url','type']]
     df['url'] = df['url'].apply(clean_url)
 

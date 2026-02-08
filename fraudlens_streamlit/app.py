@@ -51,9 +51,12 @@ textarea, input {background-color: #F1FFFF !important; color: black !important;}
 # =====================
 # Center Logo
 # =====================
+BASE_DIR = os.path.dirname(__file__)
+logo_path = os.path.join(BASE_DIR, "logo.jpg")
+
 col1, col2, col3 = st.columns([2,3,2])
 with col2:
-    st.image("logo.jpg", width=260)
+    st.image(logo_path, width=260)
 
 st.markdown("<h3 style='text-align:center;'>SMS, Link & QR Fraud Detection System</h3>", unsafe_allow_html=True)
 st.markdown("---")
